@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <script>
+    (function() {
+      var theme = localStorage.getItem('onyith-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a href="{{ '/' | relative_url }}" class="site-title">legends of o'nyith</a>
+      <nav>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <span class="theme-icon"></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; {{ site.time | date: '%Y' }} Dreslan. All rights reserved.</span>
+      <span class="footer-links"><a href="{{ '/disclosure' | relative_url }}">ai disclosure</a></span>
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('onyith-theme', next);
+    }
+  </script>
+</body>
+</html>

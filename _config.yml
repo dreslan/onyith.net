@@ -1,0 +1,32 @@
+title: Legends of O'nyith
+description: A world that resets itself every eon. No one knows why.
+url: https://onyith.net
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  chapters:
+    output: true
+    permalink: /chapters/:title/
+    sort_by: chapter_number
+
+defaults:
+  - scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: chapter
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - docker-compose.yml

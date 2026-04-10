@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<article class="chapter">
+  <header class="chapter-header">
+    <span class="chapter-number">Chapter {{ page.chapter_number }}</span>
+    <h1 class="chapter-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="chapter-content">
+    {{ content }}
+  </div>
+
+  <nav class="chapter-nav">
+    {% assign sorted = site.chapters | sort: "chapter_number" %}
+    {% assign prev = nil %}
+    {% assign next = nil %}
+    {% assign found = false %}
+    {% for ch in sorted %}
+      {% if found and next == nil %}
+        {% assign next = ch %}
+      {% endif %}
+      {% if ch.url == page.url %}
+        {% assign found = true %}
+      {% endif %}
+      {% if found == false %}
+        {% assign prev = ch %}
+      {% endif %}
+    {% endfor %}
+    <div>
+      {% if prev %}
+        <a href="{{ prev.url | relative_url }}">&larr; {{ prev.title }}</a>
+      {% endif %}
+    </div>
+    <div>
+      {% if next %}
+        <a href="{{ next.url | relative_url }}">{{ next.title }} &rarr;</a>
+      {% endif %}
+    </div>
+  </nav>
+</article>
