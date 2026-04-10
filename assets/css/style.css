@@ -19,6 +19,7 @@
   --accent-glow: rgba(74, 154, 138, 0.15);
   --border: #1a1e28;
   --toggle-icon: "\2600";
+  --stars: url('../images/stars-dark.svg');
 }
 
 [data-theme="light"] {
@@ -32,13 +33,15 @@
   --accent-glow: rgba(45, 122, 107, 0.1);
   --border: #d0cdc6;
   --toggle-icon: "\25CF";
+  --stars: url('../images/stars-light.svg');
 }
 
 /* ── Base ── */
 html {
   font-size: 19px;
   line-height: 1.8;
-  background: var(--bg);
+  background: var(--bg) var(--stars) repeat;
+  background-size: 600px 600px;
   color: var(--text);
   font-family: var(--font-serif);
   -webkit-font-smoothing: antialiased;
